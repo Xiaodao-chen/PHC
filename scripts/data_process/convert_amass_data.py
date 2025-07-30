@@ -60,12 +60,13 @@ if __name__ == "__main__":
         'vald': ['HumanEva', 'MPI_HDM05', 'SFU', 'MPI_mosh'],
         'test': ['Transitions_mocap', 'SSM_synced'],
         'train': ['CMU', 'MPI_Limits', 'TotalCapture', 'KIT',  'EKUT', 'TCD_handMocap', "BMLhandball", "DanceDB", "ACCAD", "BMLmovi", "BioMotionLab_NTroje", "Eyes_Japan_Dataset", "DFaust_67"]   # Adding ACCAD
+        # CMU BMLhandball BMLmovi
     }
     process_set = amass_splits[process_split]
     length_acc = []
     for data_path in tqdm(all_pkls):
         bound = 0
-        splits = data_path.split("/")[7:]
+        splits = data_path.split("/")[-3:]
         key_name_dump = "0-" + "_".join(splits).replace(".npz", "")
         
         if (not splits[0] in process_set):

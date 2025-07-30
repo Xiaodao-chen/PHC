@@ -56,6 +56,7 @@ def key_call_back( keycode):
 if __name__ == "__main__":
     device = torch.device("cpu")
     motion_file = "sample_data/amass_isaac_standing_upright_slim.pkl"
+    # motion_file = "data/smpl/SMPL_FEMALE.pkl"
     curr_start, num_motions, motion_id, motion_acc, time_step, dt, paused = 0, 1, 0, set(), 0, 1/30, False
     motion_lib_cfg = EasyDict({
                     "motion_file": motion_file,
