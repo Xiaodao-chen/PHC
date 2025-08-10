@@ -128,7 +128,11 @@ class MotionLibSMPL(MotionLibBase):
                 start = random.randint(0, seq_len - max_len)
                 end = start + max_len
 
-            trans = curr_file['root_trans_offset'].clone()[start:end]
+            # trans = curr_file['root_trans_offset'].clone()[start:end]
+            if isinstance(curr_file['root_trans_offset'], np.ndarray):
+                trans = torch.from_numpy(curr_file['root_trans_offset']).float()[start:end]
+            else:
+                trans = curr_file['root_trans_offset'].clone()[start:end]
             pose_aa = to_torch(curr_file['pose_aa'][start:end])
             pose_quat_global = curr_file['pose_quat_global'][start:end]
             

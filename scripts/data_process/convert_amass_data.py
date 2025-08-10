@@ -22,7 +22,7 @@ if __name__ == "__main__":
     parser.add_argument("--debug", action="store_true", default=False)
     parser.add_argument("--path", type=str, default="")
     parser.add_argument("--process_split", type=str, default="train")
-    parser.add_argument("--upright_start", action="store_true", default=False)
+    parser.add_argument("--upright_start", action="store_true", default=True)
     args = parser.parse_args()
     
     process_split = args.process_split
@@ -60,7 +60,7 @@ if __name__ == "__main__":
         'vald': ['HumanEva', 'MPI_HDM05', 'SFU', 'MPI_mosh'],
         'test': ['Transitions_mocap', 'SSM_synced'],
         'train': ['CMU', 'MPI_Limits', 'TotalCapture', 'KIT',  'EKUT', 'TCD_handMocap', "BMLhandball", "DanceDB", "ACCAD", "BMLmovi", "BioMotionLab_NTroje", "Eyes_Japan_Dataset", "DFaust_67"]   # Adding ACCAD
-        # CMU BMLhandball BMLmovi
+        # CMU BMLhandball BMLmovi KIT, TotalCapture, EKUT, TCD_handMocap, DanceDB, ACCAD, Eyes_Japan_Dataset
     }
     process_set = amass_splits[process_split]
     length_acc = []
@@ -151,6 +151,4 @@ if __name__ == "__main__":
         
     import ipdb; ipdb.set_trace()
     if upright_start:
-        joblib.dump(amass_full_motion_dict, "data/amass/amass_train_take6_upright.pkl", compress=True)
-    else:
-        joblib.dump(amass_full_motion_dict, "data/amass/amass_train_take6.pkl", compress=True)
+        joblib.dump(amass_full_motion_dict, "data/amass/cmu.pkl", compress=True)

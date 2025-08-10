@@ -250,7 +250,7 @@ def build_alg_runner(algo_observer):
     
     runner.algo_factory.register_builder('amp', lambda **kwargs: amp_agent.AMPAgent(**kwargs))
     runner.player_factory.register_builder('amp', lambda **kwargs: amp_players.AMPPlayerContinuous(**kwargs))
-
+    # 生成网络
     runner.model_builder.model_factory.register_builder('amp', lambda network, **kwargs: amp_models.ModelAMPContinuous(network))
     runner.model_builder.network_factory.register_builder('amp', lambda **kwargs: amp_network_builder.AMPBuilder())
     runner.model_builder.network_factory.register_builder('amp_mcp', lambda **kwargs: amp_network_mcp_builder.AMPMCPBuilder())
@@ -305,7 +305,7 @@ def main(cfg_hydra: DictConfig) -> None:
         )
         wandb.config.update(cfg, allow_val_change=True)
         wandb.run.name = cfg.exp_name
-        wandb.run.save()
+        # wandb.run.save()
     
     set_seed(cfg.get("seed", -1), cfg.get("torch_deterministic", False))
 
