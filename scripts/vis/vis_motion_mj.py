@@ -74,11 +74,11 @@ def build_smpl_xml(tmp_xml="/tmp/smpl/test_good.xml"):
 def parse_args():
     p = argparse.ArgumentParser("Stable SMPL motion viewer (MuJoCo)")
     p.add_argument("--motion_file", type=str, required=True,
-                   help="pkl 路径（如 data/amass/...upright.pkl 或你的 dance_sample_g1.pkl）")
+                   help="pkl 路径（如 data/amass/...upright.pkl 或你的 dance_sample_g1.pkl)")
     p.add_argument("--egl", action="store_true", help="在无显示/远程环境下启用 EGL (MUJOCO_GL=egl)")
-    p.add_argument("--start_idx", type=int, default=0, help="起始 motion 索引（batch 加载起点）")
-    p.add_argument("--num_motions", type=int, default=1, help="每次加载的 motion 数（默认 1）")
-    p.add_argument("--fps", type=float, default=30.0, help="回放帧率（如 pkl 未带 fps，则使用该值")
+    p.add_argument("--start_idx", type=int, default=0, help="起始 motion 索引(batch 加载起点）")
+    p.add_argument("--num_motions", type=int, default=1, help="每次加载的 motion 数（默认 1)")
+    p.add_argument("--fps", type=float, default=30.0, help="回放帧率（如 pkl 未带 fps,则使用该值")
     p.add_argument("--cam_dist", type=float, default=3.0)
     p.add_argument("--cam_azimuth", type=float, default=180.0)
     p.add_argument("--cam_elevation", type=float, default=-30.0)
